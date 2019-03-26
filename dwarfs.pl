@@ -1,6 +1,6 @@
-infront(Grumpy, Dopey).
-infront(Doc, Droopy).
-infront(Doc, Happy).
+infront(grumpy, dopey).
+infront(doc, droopy).
+infront(doc, happy).
 infront(smelly, grumpy).
 infront(happy, smelly).
 infront(smelly, stumpy).
@@ -11,20 +11,27 @@ infront(dopey, droopy).
 infront(sleepy, grumpy).
 infront(stumpy, dopey).
 
-behind(stumpy, sneezy).
-behind(stumpy, doc).
-behind(sleepy, stumpy).
-behind(sleepy, smelly).
-behind(sleepy, happy).
-behind(bashful, stumpy).
-behind(bashful, droopy).
-behind(bashful, sleepy).
-behind(dopey, sneezy).
-behind(dopey, sleepy).
-behind(dopey, doc).
-behind(smelly, doc).
+isbehind(stumpy, sneezy).
+isbehind(stumpy, doc).
+isbehind(sleepy, stumpy).
+isbehind(sleepy, smelly).
+isbehind(sleepy, happy).
+isbehind(bashful, stumpy).
+isbehind(bashful, droopy).
+isbehind(bashful, sleepy).
+isbehind(dopey, sneezy).
+isbehind(dopey, sleepy).
+isbehind(dopey, doc).
+isbehind(smelly, doc).
 
-start(X, Y) :-
-infront(X, Y).
-behind(Y, X).
+behind(X, Y) :-
+isbehind(X, Y);
+infront(Y, X).
+
+front(X, Y) :-
+infront(X, Y),
+\+isbehind(X,Y),
+front(Y, _).
+
+
 
